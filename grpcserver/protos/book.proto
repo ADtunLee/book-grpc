@@ -1,0 +1,37 @@
+syntax = "proto3";
+package book;
+
+service BookService {
+    rpc home(bookId) returns (Book){}
+    rpc getAllBook(Empty) returns (BookList) {}
+    rpc createBook(newBook) returns (result) {}
+ }
+
+message bookId{
+    string _id = 1;
+}
+
+message Empty {}
+
+message BookList {
+    repeated Book book = 1;
+}
+
+message msg {
+    string msg = 1;
+}
+
+message newBook {
+    string name = 1;
+    string type = 2;
+}
+
+message Book {
+    string _id = 1;
+    string name = 2;
+    string categoryId = 3;
+}
+
+message result {
+    string status = 1;
+}
