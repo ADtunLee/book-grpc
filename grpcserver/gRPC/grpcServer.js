@@ -21,8 +21,10 @@ mongoose.connect(DB_URI, {
 let home = async (call, callback) => {
   let bookId = call.request._id;
   console.log(bookId);
-  
   let book = await Book.findById(bookId);
+  if (book) {
+    console.log(book);
+  } 
   callback(null, { book: book });
 };
 
@@ -36,7 +38,7 @@ let createBook = async (call, callback) => {
 };
 let getAllBook = async (call, callback) => {
   let book = await Book.find({});
-  callback(null, { book: book });
+  callback(null, { book });
 };
 
 let main = async () => {

@@ -5,7 +5,7 @@ mongoose.Promise = bluebird;
 
 let BookSchema = new Schema({
   name: String,
-  category: Schema.Types.ObjectId
+  type: { type: String, default: "book" },
 });
 
 
