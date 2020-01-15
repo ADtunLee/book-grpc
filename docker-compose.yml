@@ -3,12 +3,12 @@ services:
 
   books:
     build: 
-      context: ./books
+      context: ./services/book/app
       dockerfile: Dockerfile
     container_name: books
-    working_dir: /var/www/test/books
+    working_dir: /var/www/test/app
     volumes: 
-      - ./books:/var/www/test/books
+      - ./services/book/app:/var/www/test/app
     hostname: books
     depends_on: 
       - grpcserver
@@ -16,10 +16,10 @@ services:
     
   grpcserver:
     build:
-      context: ./grpcserver
+      context: ./services/book/api
       dockerfile: Dockerfile 
     container_name: grpcserver
-    working_dir: /var/www/test/grpcserver
+    working_dir: /var/www/test/api
     hostname: grpcserver
     depends_on: 
       - db
@@ -38,7 +38,7 @@ services:
     ports:
       - 443:443
     volumes:
-      - ./default.conf:/etc/nginx/conf.d/default.conf
+      - ./services/nginx/default.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - books
       - grpcserver
