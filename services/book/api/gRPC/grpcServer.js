@@ -42,7 +42,8 @@ let main = async () => {
     getAllBook: getAllBook,
     createBook: createBook 
   });
-  server.bind("grpcserver:50051", grpc.ServerCredentials.createInsecure());
+  // localhost
+  server.bind("localhost:50051", grpc.ServerCredentials.createInsecure());
   server.start();
   console.log("gRPC server running at localhost:50051"); 
 };

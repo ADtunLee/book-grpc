@@ -6,7 +6,7 @@ let bookProtoDefinition = protoLoader.loadSync(bookProtoPath);
 let bookPackageDefinition = grpc.loadPackageDefinition(bookProtoDefinition)
   .book;
 let client = new bookPackageDefinition.BookService(
-  "grpcserver:50051",
+  "localhost:50051",
   grpc.credentials.createInsecure()
 );
 
