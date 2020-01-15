@@ -1,2 +1,2 @@
-services/book/books/node_modules
-services/book/grpcServer/node_modules
+services/book/api/node_modules
+services/book/app/node_modules
