@@ -2,12 +2,14 @@ syntax = "proto3";
 package book;
 
 service BookService {
-    rpc home(Empty) returns (msg){}
+    rpc home(Say) returns (msg){}
     rpc getAllBook(Empty) returns (BookList) {}
     rpc createBook(newBook) returns (result) {}
  }
 
-message Empty {
+message Empty {}
+
+message Say {
     string say = 1;
 }
 

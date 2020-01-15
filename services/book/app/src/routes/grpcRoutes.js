@@ -12,8 +12,10 @@ let client = new bookPackageDefinition.BookService(
 
 let home = async (req, res) => {
   let payload = { say:"book"}
-  client.home({payload}, (err, msg) => {
+  
+  client.home(payload, (err, msg) => {
     console.log(payload);
+    
     res.json(msg);
   });
 };

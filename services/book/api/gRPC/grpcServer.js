@@ -18,7 +18,8 @@ mongoose.connect(DB_URI, {
   useCreateIndex: true
 });
 let home = async (call, callback) => {
-  console.log(call);
+  console.log(call.request);
+  
   callback(null, { msg: call.request.say });
 };
 
