@@ -23,19 +23,6 @@ let home = async (call, callback) => {
   callback(null, { msg: call.request.say });
 };
 
-let createBook = async (call, callback) => {
-  let book = call.request;
-  let newBook = new Book({ name: book.name, category: book.categoryId });
-  await newBook.save();
-  console.log("saveBook");
-
-  callback(null, { status: "success" });
-};
-let getAllBook = async (call, callback) => {
-  let book = await Book.find({});
-  callback(null, { book });
-};
-
 let main = async () => {
   let server = new grpc.Server();
 

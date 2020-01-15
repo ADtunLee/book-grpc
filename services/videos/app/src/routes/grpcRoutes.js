@@ -19,26 +19,9 @@ let home = async (req, res) => {
   });
 };
 
-let getAllBook = (req, res) => {
-  client.getAllBook({}, (err, books) => {
-    res.json(books);
-  });
-};
-
-let createBook = (req, res) => {
-  console.log(req.body);
-
-  let payload = { name: req.body.name, type: req.body.type };
-  client.createBook(payload, (err, result) => {
-    console.log("created");
-    res.json(result);
-  });
-};
 
 
 
 module.exports = {
   home,
-  getAllBook,
-  createBook,
 };
