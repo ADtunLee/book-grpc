@@ -6,13 +6,14 @@ let bookProtoDefinition = protoLoader.loadSync(bookProtoPath);
 let bookPackageDefinition = grpc.loadPackageDefinition(bookProtoDefinition)
   .book;
 let client = new bookPackageDefinition.BookService(
-  "localhost:50051",
+  "grpcserver:50051",
   grpc.credentials.createInsecure()
 );
 
 let home = async (req, res) => {
-  client.home({}, (err, msg) => {
-    console.log(msg);
+  let payload = { say:"book"}
+  client.home({payload}, (err, msg) => {
+    console.log(payload);
     res.json(msg);
   });
 };
@@ -26,7 +27,7 @@ let getAllBook = (req, res) => {
 let createBook = (req, res) => {
   console.log(req.body);
 
-  let payload = { name: req.body.name, typeId: req.body.categoryId };
+  let payload = { name: req.body.name, type: req.body.type };
   client.createBook(payload, (err, result) => {
     console.log("created");
     res.json(result);

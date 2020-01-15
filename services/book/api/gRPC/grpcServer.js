@@ -18,7 +18,8 @@ mongoose.connect(DB_URI, {
   useCreateIndex: true
 });
 let home = async (call, callback) => {
-  callback(null, { msg: "books" });
+  console.log(call);
+  callback(null, { msg: call.request.say });
 };
 
 let createBook = async (call, callback) => {
@@ -43,7 +44,7 @@ let main = async () => {
     createBook: createBook 
   });
   // localhost
-  server.bind("localhost:50051", grpc.ServerCredentials.createInsecure());
+  server.bind("grpcserver:50051", grpc.ServerCredentials.createInsecure());
   server.start();
   console.log("gRPC server running at localhost:50051"); 
 };

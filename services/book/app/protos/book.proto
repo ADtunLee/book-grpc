@@ -7,7 +7,10 @@ service BookService {
     rpc createBook(newBook) returns (result) {}
  }
 
-message Empty {}
+ message Empty {
+    string say = 1;
+}
+
 
 message BookList {
     repeated Book book = 1;

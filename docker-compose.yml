@@ -10,6 +10,8 @@ services:
     volumes: 
       - ./services/book/app:/var/www/test/app
     hostname: books
+    ports:
+      - "3002:3001"
     depends_on: 
       - grpcserver
     command: bash -c "npm rebuild && npm start"
@@ -31,6 +33,21 @@ services:
     image: mongo
     ports:
       - "27017:27017"
+  
+  videos:
+    build: 
+      context: ./services/videos/app
+      dockerfile: Dockerfile
+    container_name: videos
+    working_dir: /var/www/videos/app
+    volumes: 
+      - ./services/videos/app:/var/www/videos/app
+    hostname: videos
+    ports:
+      - "3003:3001"
+    depends_on: 
+      - grpcserver
+    command: bash -c "npm rebuild && npm start"
 
   nginx:
     image: nginx:latest
@@ -42,3 +59,4 @@ services:
     depends_on:
       - books
       - grpcserver
+      - videos

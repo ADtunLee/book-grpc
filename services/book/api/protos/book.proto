@@ -7,11 +7,14 @@ service BookService {
     rpc createBook(newBook) returns (result) {}
  }
 
+message Empty {
+    string say = 1;
+}
+
 message bookId{
     string _id = 1;
 }
 
-message Empty {}
 
 message BookList {
     repeated Book book = 1;
